@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--TABLE: Bảng
+    tr : biểu thị hàng
+    td: cột
+
+    ***các thuộc tính(atribute) của hàng
+    boder: đường viền của bảng (đặt trong thẻ mỏ của table)
+    cellpadding:khoảng cách từ viền của cột đến nội dung
+    cellspacing: là khoảng cách từ viền của bảng đến viền của cột
+    colspan: gộp các cột
+    rowspan: để gộp các hàng
+    caption: tiêu đề của bảng
+
+-->
+    <table border="1" cellpadding="5" cellspacing="5">
+        <caption>Quản lí sinh viên</caption>
+        <thead>
+            <!--Phần đầu của bảng-->
+            <tr>
+                <th>STT</th>
+                <th bgcolor="red">Tên</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!--Phần thân của bảng-->
+            <tr>
+                <th align="center">1</th>
+                <th>Nguyễn Văn A</th>
+            </tr>
+            <tr>
+                <th>2</th>
+                <th>Trần Thị B</th>
+            </tr>
+        </tbody>
+        <tfoot>
+            <!--Phần cuối của bảng-->
+            <tr>
+                <td colspan="2">Tổng số sinh viên = 2</td>
+            </tr>
+        </tfoot>
+
+    </table>
+</body>
+</html>
