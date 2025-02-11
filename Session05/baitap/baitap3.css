@@ -1,0 +1,19 @@
+div{
+    background-color: rgb(224, 221, 221);
+}
+table{
+    width: 100%;
+}
+.align{
+    text-align: center;
+}
+td{
+    text-align: center;
+}
+th{
+    background-color: rgb(51, 84, 235);
+    color: white;
+}
+.tr3{
+    background-color: white;
+}
