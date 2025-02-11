@@ -3,6 +3,8 @@ div{
 }
 table{
     width: 100%;
+    border: 2px solid white;
+    border-collapse: collapse;
 }
 .align{
     text-align: center;
