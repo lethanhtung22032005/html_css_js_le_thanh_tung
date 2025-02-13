@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.tieude {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+}
+
+.tieudedau {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.modal-header i {
+    cursor: pointer;
+}
+
+.modal-body {
+    margin-top: 10px;
+}
+
+.modal-body label {
+    font-weight: bold;
+    display: block;
+    margin: 5px 0;
+}
+
+.modal-body input,
+.modal-body textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.cuoi {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.Close {
+    background: #6c757d;
+    color: white;
+    border-radius: 5px;
+    border-style: none; 
+    
+}
+
+.Send-message {
+    background: #007bff;
+    color: white;
+    border-radius: 5px;
+    border-style: none;
+}

@@ -1,0 +1,20 @@
+.card {
+    width: 400px;
+    padding: 20px;
+    background-color: white;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #a02c2c;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: #2D2D5A;
+}
