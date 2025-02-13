@@ -1,11 +1,5 @@
 * {
     margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
 }
 
 .header {
@@ -18,8 +12,6 @@ body {
 }
 
 .header a {
-    color: white;
-    text-decoration: none;
     margin: 0 10px;
     font-size: 14px;
 }
@@ -38,8 +30,7 @@ body {
 }
 
 
-.sidebar ul li a {
-    text-decoration: none;
+.sidebar ul li a {  
     color: blue;
 }
 
