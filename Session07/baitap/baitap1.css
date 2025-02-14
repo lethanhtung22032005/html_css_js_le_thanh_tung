@@ -6,6 +6,7 @@
     border: 1px solid rgb(230, 228, 228);
     width: 550px;
     height: 315px;
+    padding-left: 20px;
 }
 h1{
     line-height: 1.7;
