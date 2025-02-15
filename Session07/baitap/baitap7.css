@@ -40,7 +40,7 @@ body {
 .modal-body input,
 .modal-body textarea {
     width: 100%;
-    padding: 8px;
+    padding: 3px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -64,7 +64,7 @@ body {
     color: white;
     border-radius: 5px;
     border-style: none; 
-    
+    padding: 10px 20px;
 }
 
 .Send-message {
@@ -72,4 +72,5 @@ body {
     color: white;
     border-radius: 5px;
     border-style: none;
+    padding: 10px 20px;  
 }
