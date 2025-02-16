@@ -8,7 +8,7 @@ form {
     width: 100%;
 
     padding-bottom: 20px;
-    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    background: linear-gradient(135deg, #c00c99, #feb47b);
     border-radius: 10px;
     background-color: white;
     display: center;
@@ -27,7 +27,7 @@ form {
 
 input {
     border-radius: 5px;
-    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    background: linear-gradient(135deg, #c5128f, #c50fb6);
     padding: 10px;
     border: 1px solid white;
     ;
@@ -35,7 +35,7 @@ input {
 
 textarea {
     border-radius: 5px;
-    background: linear-gradient(135deg, #ff7e5f, #feb47b);
+    background: linear-gradient(135deg, #76098b, #36063a);
     border: 1px solid white;
 }
 
