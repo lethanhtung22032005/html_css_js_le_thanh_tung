@@ -1,0 +1,19 @@
+.container{
+    width: 100px;
+    height: 100px;
+    margin: 30% auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: blue;
+    color: white;
+    flex-direction: column;
+
+
+}
+
+.contain {
+    border: 1px solid black;
+    width: 700px;
+    height: 500px;
+}
