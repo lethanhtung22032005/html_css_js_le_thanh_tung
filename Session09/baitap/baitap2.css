@@ -5,16 +5,15 @@
 }
 
 .container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     padding: 20px;
     background-color: #f0f0f0;
     justify-content: center;
     align-items: center;
     border: 1px solid black;
     margin: 3% 15px;
-
 }
 
 .item {
@@ -24,4 +23,7 @@
     padding: 40px 0;
     border-radius: 10px;
     font-size: 20px;
+    flex: 1 1 calc(25% - 10px);
+    /* Mỗi item chiếm 25% trừ đi khoảng cách */
+    max-width: calc(25% - 10px);
 }
