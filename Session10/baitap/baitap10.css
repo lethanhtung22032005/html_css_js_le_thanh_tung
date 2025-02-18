@@ -1,0 +1,17 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.small-container {
+    height: 25%;
+}
+
+.list {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #f4f4f9;
+    color: #333;
+}

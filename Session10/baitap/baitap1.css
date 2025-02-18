@@ -1,0 +1,40 @@
+.logo{
+    font-family: "Grechen Fuemen", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 35px;
+    padding-left: 50px;
+}
+
+.navigation-Home{
+    text-decoration: none;
+    color: black;
+    padding-right: 10px;
+}
+
+.navigation{
+    text-decoration: none;
+    opacity: 0.5;
+    color: black;
+    padding-right: 10px;
+}
+
+.header{
+    background-color: rgb(190, 185, 185);
+    color: black;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+button{
+    background-color: rgb(128, 123, 123);
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+}
