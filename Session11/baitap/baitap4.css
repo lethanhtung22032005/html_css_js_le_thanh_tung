@@ -26,12 +26,12 @@ body {
 }
 
 .header .box {
-    background-color: #f4a261;
+    background-color: rgb(255, 165, 55);
     flex: 1;
 }
 
 .banner {
-    background-color: #f4d35e;
+    background-color: rgb(218, 236, 0);
     height: 200px;
 }
 
@@ -54,7 +54,7 @@ body {
 }
 
 .footer .box {
-    background-color: #d3d3d3;
+    background-color: rgb(227, 227, 227);
     min-height: 80px;
     flex: 1;
 }
