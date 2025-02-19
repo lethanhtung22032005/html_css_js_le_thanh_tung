@@ -1,3 +1,4 @@
+/* Reset CSS cơ bản để đảm bảo tính nhất quán giữa các trình duyệt */
 * {
     margin: 0;
     padding: 0;
@@ -5,57 +6,76 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: sans-serif;
 }
 
 .container {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding: 10px;
+    /* Sắp xếp các phần tử theo chiều dọc */
+    min-height: 100vh;
+    /* Đảm bảo container lấp đầy chiều cao viewport */
 }
 
-.header,
-.footer {
-    background: #6a1b9a;
+header,
+footer {
+    background-color: #333;
     color: white;
     text-align: center;
     padding: 20px;
 }
 
-.main {
-    background: #9c27b0;
+main {
+    flex: 1;
+    /* Cho phép main chiếm không gian còn lại */
     padding: 20px;
-    text-align: center;
-    color: white;
 }
 
-.grid {
+.top-section,
+.bottom-section {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    /* Cho phép các item xuống dòng khi cần */
+    gap: 20px;
+    /* Khoảng cách giữa các item */
 }
 
-.box {
-    background: #d81b60;
-    color: white;
+.top-item,
+.bottom-item {
+    background-color: #f0f0f0;
     text-align: center;
     padding: 20px;
-    flex: 1 1 calc(33.333% - 10px);
 }
 
-@media (max-width: 1200px) {
-    .box {
-        flex: 1 1 calc(50% - 10px);
+/* Mobile */
+@media (max-width: 767px) {
+
+    .top-item,
+    .bottom-item {
+        width: 100%;
     }
 }
 
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
+/* Tablet */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .top-item {
+        width: 48%;
+        /* Để lại khoảng cách nhỏ giữa 2 item */
     }
 
-    .box {
-        flex: 1 1 100%;
+    .bottom-item {
+        width: 48%;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1200px) {
+    .top-item {
+        width: 48%;
+    }
+
+    .bottom-item {
+        width: 23.5%;
+        /* Để lại khoảng cách nhỏ giữa 4 item */
     }
 }
