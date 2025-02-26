@@ -1,0 +1,9 @@
+-thiết lập viewport là meta
+-thuộc tính css ẩn phần tử là display:none
+-thuộc tính sd để xác định điểm phá vỡ là width
+-destop first = max width
+-mobile first = min width
+-console.log("10" 
+	+ 5 thì 5 thành string và thành 105
+	- 5 thì "10" thành number và thành 10-5 và kq = 5
+-

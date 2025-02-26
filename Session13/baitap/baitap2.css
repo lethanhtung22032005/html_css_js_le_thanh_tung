@@ -1,0 +1,147 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.icons a {
+    margin-left: 15px;
+    color: #333;
+}
+
+.banner {
+    background-image: url('banner.jpg');
+    background-size: cover;
+    color: white;
+    text-align: center;
+    padding: 100px 0;
+}
+
+.banner-content h1 {
+    font-size: 48px;
+    margin: 0;
+}
+
+.banner-content p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.banner-content button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.browse-range {
+    padding: 50px;
+    text-align: center;
+}
+
+.browse-range h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.browse-range p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.categories {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.category {
+    text-align: center;
+}
+
+.category img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+}
+
+.category h3 {
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+.products {
+    padding: 50px;
+    text-align: center;
+}
+
+.products h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+}
+
+.product-list {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.product {
+    text-align: center;
+}
+
+.product img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+}
+
+.product h3 {
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+.product p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.product button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
