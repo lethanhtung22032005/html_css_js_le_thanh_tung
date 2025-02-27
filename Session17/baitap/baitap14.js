@@ -1,0 +1,15 @@
+const pi = Math.PI;
+let r = Number(prompt("ban kinh day: "));
+let h = Number(prompt("chieu cao: "));
+let c = 2 * pi * r * h;
+let c1 = c.toFixed(2);
+document.write("dien tich xung quanh = " + c1 + "<br>");
+let tp = c + 2 * pi * Math.pow(r, 2);
+let tp1 = tp.toFixed(2);
+document.write("dien tich toan phan = " + tp1 + "<br>");
+let v = pi * Math.pow(r, 2) * h;
+let v1 = v.toFixed(2);
+document.write("the tich = " + v1 + "<br>");
+let d = pi * Math.pow(r, 2);
+let d1 = d.toFixed(2);
+document.write("dien tich day = " + d1 + "<br>");

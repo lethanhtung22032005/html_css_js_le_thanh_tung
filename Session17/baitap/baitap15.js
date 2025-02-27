@@ -1,0 +1,11 @@
+const pi = Math.PI;
+let r = Number(prompt("ban kinh: "));
+let v = 4 / 3 * pi * Math.pow(r, 3);
+let v1 = v.toFixed(2);
+document.write("the tich khoi cau : " + v1 + "<br>");
+let s = 4 * pi * Math.pow(r, 2);
+let s1 = s.toFixed(2);
+document.write("dien tich be mat khoi cau : " + s1 + "<br>");
+let d = 2 * pi * r;
+let d1 = d.toFixed(2);
+document.write("chu vi lon nhat = " + d1 + "<br>");
