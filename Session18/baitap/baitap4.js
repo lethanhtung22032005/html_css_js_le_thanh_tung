@@ -1,6 +1,10 @@
 let lux = parseInt(prompt("Moi ban nhap vao 1 so:"));
 
 switch (lux) {
+    case 0:
+        console.log("So khong");
+        break;
+    
     case 1:
         console.log("So mot");
         break;
