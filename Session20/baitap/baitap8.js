@@ -1,17 +1,22 @@
-let m = prompt("Nhập vào một số kiểm tra có bao nhiêu số nguyên tố từ số đó đến 0: ");
-let temp = 0;
-if (m <= 0) {
-    document.write("Số bạn nhập không hợp lệ");
+let n = parseInt(prompt("Nhap n so nguyen to: "));
+let num = 2;
+let count = 0;
+
+if (n < 0) {
+    document.write("So khong hop le")
 } else {
-    for (let i = 1; i <= m; i++) {
-        for (let j = 1; j <= i; j++) {
-            if (i % j == 0) {
-                temp++;
+    while (count < n) {
+        let flag = true;
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                flag = false;
+                break;
             }
         }
-        if (temp == 2) {
-            document.write(i + " ");
+        if (flag) {
+            document.write(" ", num);
+            count++;
         }
-        temp = 0;
+        num++;
     }
 }

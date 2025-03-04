@@ -1,19 +1,20 @@
-let m = prompt("Nhập số để tính số  fibonacci: ");
-let temp;
-if (m <= 0) {
-    document.write("Số bạn nhập không hợp lệ");
+let n = +prompt("Nhap mot so n: ");
+let a = 1;
+let b = 1;
+if (isNaN(n)) {
+    document.write("Khong hop le");
 } else {
-    if (m == 2) {
-        document.write("0,1");
-    } else {
-        let a = 0;
-        let b = 1;
-        document.write("0,1");
-        do {
-            temp = a + b;
-            a = b;
-            b = temp;
-            document.write("," + temp);
-        } while ((a + b) < m);
+    if (n >= 1) {
+        document.write(a);
     }
+    if (n >= 2) {
+        document.write(" ", b);
+    }
+    for (let i = 2; i < n; i++) {
+        let result = a + b;
+        document.write(" ", result);
+        a = b;
+        b = result;
+    }
+
 }

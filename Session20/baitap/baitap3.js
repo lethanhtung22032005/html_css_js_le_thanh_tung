@@ -1,13 +1,18 @@
-let n = prompt("Nhập vào một số: ");
-let temp = 0;
-let arr = n.split("");
-for (let i = 0; i < arr.length; i++) {
-    if (arr[i] == arr[arr.length - i - 1]) {
-        temp++;
-    }
-}
-if (temp == arr.length) {
-    document.write("Số bạn nhập là số đối xứng");
+let number = prompt("Nhap vao mot chuoi so nguyen: ");
+let length = number.length;
+let isPalindrome = true;
+if (isNaN(number)) {
+    document.write("So khong hop le");
 } else {
-    document.write("Số bạn nhập không phải là số đối xứng");
+    for (let i = 0; i < length / 2; i++) {
+        if (number.charAt(i) !== number.charAt(length - 1 - i)) {
+            isPalindrome = false;
+            break;
+        }
+    }
+    if (isPalindrome) {
+        document.write("La so doi xung");
+    } else {
+        document.write("Khong la so doi xung");
+    }
 }
