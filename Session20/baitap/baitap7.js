@@ -16,5 +16,4 @@ if (isNaN(n)) {
         a = b;
         b = result;
     }
-
 }
