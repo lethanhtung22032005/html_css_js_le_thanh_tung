@@ -1,5 +1,5 @@
 function validEmail(email) {
-    if (email.indexOf("@") == -1) {
+    if (!email.includes("@")) {
         return false;
     }
     return (email.endsWith(".com") || email.endsWith(".vn"))
