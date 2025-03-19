@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="./baitap789.css">
+</head>
+
+<body>
+
+    <div id="myDIV" class="header">
+        <h2>My To Do List</h2>
+        <input type="text" id="newTask" placeholder="Nhập công việc...">
+        <span onclick="addTask()" class="addBtn">Add</span>
+    </div>
+
+    <ul id="taskList">
+        <li onclick="toggleTask(this)">Hit the gym <span class="close" onclick="removeTask(event, this)">×</span></li>
+    </ul>
+
+    <script src="./baitap789.js"></script>
+
+</body>
+
+</html>

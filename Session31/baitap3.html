@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            border: 2px solid black;
+            width: 400px;
+        }
+
+        .color1 {
+            background-color: red;
+        }
+
+        .color2 {
+            background-color: blue;
+        }
+
+        .color3 {
+            background-color: yellow;
+        }
+
+        .flex-container {
+            display: flex;
+        }
+
+        .flex-container>button {
+            border: 1px solid black;
+            width: 100px;
+            margin: 10px;
+            text-align: center;
+            line-height: 75px;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <p>change bg-color</p>
+        <p>Mouse click</p>
+        <div class="flex-container">
+            <button style="background-color: red;" onclick="red()">red</button>
+            <button style="background-color: blue;" onclick="blue()">blu</button>
+            <button style="background-color: yellow;" onclick="yellow()">yellow</button>
+        </div>
+    </div>
+    <script src="./baitap3.js"></script>
+</body>
+
+</html>
