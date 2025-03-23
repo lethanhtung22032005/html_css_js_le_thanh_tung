@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <style>
+        div{
+            width: 200px;
+            height: 100px;
+            border: 1px solid black;
+            opacity: 0.1;
+        } -->
+    </style>
+</head>
+<body>
+    <div>
+            <progress id="progress" max="100 " value="0">thanh tiến trình</progress>
+            <button onclick="increase()">tăng</button>
+            <button onclick="decrease()">giảm</button>
+    </div>
+    <script>
+        let valueProgress = 0; 
+
+        function increase() {
+            valueProgress += 10;
+            if (valueProgress > 100) {
+                valueProgress = 100;
+            }
+            document.getElementById("progress").value = valueProgress;
+
+        }
+
+        function decrease() {
+            valueProgress -= 10;
+            if (valueProgress < 0) {
+                valueProgress = 0;
+            }
+            document.getElementById("progress").value = valueProgress;
+        }
+    </script>
+
+</body>
+</html>
