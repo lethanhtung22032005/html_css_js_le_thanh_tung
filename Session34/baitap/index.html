@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>LOCAL STORAGE</h1>
+    <script>
+        /* 
+            LƯU TRỮ DỮ LIỆU LÂU DÀI TRÊN TRÌNH DUYỆT
+            DUNG LƯỢNG TẦM 5MB ĐẾN 10MB
+            1MB= 1024KB  LƯU 4 CÁI ẢNH ==> 20 CÁI ẢNH
+
+            CÚ PHÁP LÀM VIỆC VỚI LOCAL 
+            I- LƯU TRỮ DỮ LIỆU
+                1. localstorage.setItem("tên_key","giá trị cần lưu")
+            II- LẤY VỀ
+                2. localstorage.getItem("tên_key")
+            III- XÓA
+
+        */
+        // let fullName= "nguyễn minh thu";
+        // localStorage.setItem("fullName",fullName);
+        // let age=25;
+        // localStorage.setItem("age",age);
+        // let arr=["hoa","hồng","nhung"];
+        // khi muốn lưu mảng lên local chuyển sang định dạng JSON
+        // cú pháp chuyển sang định dạng JSON
+        // JSON.stringify()
+        //     let age="25";
+        //    age= Number(age);
+        //     console.log(111,age);
+
+        //     localStorage.setItem("arr",JSON.stringify(arr));
+        //     let fullName= localStorage.getItem("fullName1");
+        //     console.log(2222,fullName);
+        let arr = localStorage.getItem("arr");
+        // let products=[
+        //     {
+        //         id:1,
+        //         name:"iphone15"
+        //     },
+        //     {
+        //         id:2,
+        //         name:"iphone16"
+        //     }
+        // ]
+        //  localStorage.setItem("products",JSON.stringify(products));
+        // console.log("1111",arr);
+        // let products= JSON.parse(localStorage.getItem("products"));
+        // console.log(1111,products);
+        localStorage.setItem("age", 20);
+        localStorage.setItem("name", "vân");
+        // localStorage.clear();// xóa hết
+        localStorage.removeItem("age");
+    </script>
+</body>
+
+</html>

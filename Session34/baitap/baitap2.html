@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input,
+        select,
+        button {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Task Management</h2>
+    <form id="task-form">
+        <input type="text" id="content" placeholder="Content" required>
+        <input type="date" id="due-date" required>
+        <select id="status">
+            <option value="Pending">Pending</option>
+            <option value="Completed">Completed</option>
+        </select>
+        <input type="text" id="assigned-to" placeholder="Assigned To" required>
+        <button type="submit">Add Task</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Content</th>
+                <th>Due Date</th>
+                <th>Status</th>
+                <th>Assigned To</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="task-list"></tbody>
+    </table>
+    <script>
+
+        if (!localStorage.getItem("tasks")) {
+            const tasks = [
+                { id: 1, content: "Learn Javascript Session 01", dueDate: "2023-04-17", status: "Pending", assignedTo: "Anh Bách" },
+                { id: 2, content: "Learn Javascript Session 02", dueDate: "2023-04-17", status: "Pending", assignedTo: "Lâm th" },
+                { id: 3, content: "Learn CSS Session 1", dueDate: "2023-04-17", status: "Pending", assignedTo: "Hiếu Cí ớt ớt" }
+            ];
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+        }
+
+        function getTasks() {
+            return JSON.parse(localStorage.getItem("tasks")) || [];
+        }
+
+        function saveTasks(tasks) {
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+        }
+
+        function renderTasks() {
+            const taskList = document.getElementById("task-list");
+            taskList.innerHTML = "";
+            getTasks().forEach(task => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+            <td>${task.id}</td>
+            <td>${task.content}</td>
+            <td>${task.dueDate}</td>
+            <td>${task.status}</td>
+            <td>${task.assignedTo}</td>
+            <td>
+                <button onclick="deleteTask(${task.id})">xóa</button>
+                <button onclick="updateTaskButton(${task.id})">update</button>
+            </td>
+        `;
+                taskList.appendChild(row);
+            });
+        }
+
+        function addTask(event) {
+            event.preventDefault();
+            const content = document.getElementById("content").value;
+            const dueDate = document.getElementById("due-date").value;
+            const status = document.getElementById("status").value;
+            const assignedTo = document.getElementById("assigned-to").value;
+
+            const tasks = getTasks();
+            const newTask = { id: tasks.length + 1, content, dueDate, status, assignedTo };
+            tasks.push(newTask);
+            saveTasks(tasks);
+            renderTasks();
+        }
+
+        function deleteTask(id) {
+            let tasks = getTasks().filter(task => task.id !== id);
+            saveTasks(tasks);
+            renderTasks();
+        }
+
+        function updateTaskButton(id) {
+            let tasks = getTasks();
+            let task = tasks.find(task => task.id === id);
+            if (task) {
+                const newContent = prompt("Update Content:", task.content);
+                const newDueDate = prompt("Update Due Date:", task.dueDate);
+                const newStatus = prompt("Update Status:", task.status);
+                const newAssignedTo = prompt("Update Assigned To:", task.assignedTo);
+
+                if (newContent !== null) task.content = newContent;
+                if (newDueDate !== null) task.dueDate = newDueDate;
+                if (newStatus !== null) task.status = newStatus;
+                if (newAssignedTo !== null) task.assignedTo = newAssignedTo;
+
+                saveTasks(tasks);
+                renderTasks();
+            }
+        }
+
+        window.onload = () => {
+            renderTasks();
+            document.getElementById("task-form").addEventListener("submit", addTask);
+        };
+    </script>
+</body>
+
+</html>
