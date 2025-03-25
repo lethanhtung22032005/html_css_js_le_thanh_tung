@@ -1,0 +1,28 @@
+input {
+    width: 95%;
+}
+
+.store {
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.itemStore {
+    width: 250px;
+    border: 1px solid black;
+    margin: 2px;
+    padding: 5px;
+}
+
+.itemStore button {
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+}
+
+.itemStore img {
+    width: 235px;
+    height: 150px;
+}
