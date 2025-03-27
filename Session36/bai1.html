@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chào bạn</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        input {
+            padding: 8px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="app">
+    <!-- Nội dung sẽ được tạo bằng JS -->
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const app = document.getElementById("app");
+        const savedName = localStorage.getItem("username");
+
+        function renderGreeting(name) {
+            app.innerHTML = `
+                <h2>👋 Chào bạn, <b>${name}</b>!</h2>
+                <button onclick="changeName()">Đổi tên</button>
+            `;
+        }
+
+        function renderInputForm() {
+            app.innerHTML = `
+                <h2>Nhập tên của bạn</h2>
+                <input type="text" id="nameInput" placeholder="Nhập tên...">
+                <button onclick="saveName()">Lưu</button>
+            `;
+        }
+
+        window.saveName = function () {
+            const name = document.getElementById("nameInput").value.trim();
+            if (name) {
+                localStorage.setItem("username", name);
+                renderGreeting(name);
+            } else {
+                alert("Vui lòng nhập tên hợp lệ!");
+            }
+        };
+
+        window.changeName = function () {
+            localStorage.removeItem("username");
+            renderInputForm();
+        };
+
+        // Kiểm tra nếu có tên trong localStorage, hiển thị lời chào, nếu không thì nhập tên
+        if (savedName) {
+            renderGreeting(savedName);
+        } else {
+            renderInputForm();
+        }
+    });
+</script>
+
+</body>
+</html>

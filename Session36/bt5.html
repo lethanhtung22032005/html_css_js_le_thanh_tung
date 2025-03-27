@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html lang="vi">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Quản lý công việc</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                text-align: center;
+                background-color: #f5f5f5;
+            }
+
+            .container {
+                width: 80%;
+                margin: auto;
+                padding: 20px;
+                background: white;
+                border-radius: 10px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .task-columns {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 20px;
+            }
+
+            .column {
+                width: 30%;
+                background: #fff;
+                padding: 15px;
+                border-radius: 8px;
+                box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.8);
+            }
+
+            button {
+                background-color: blue;
+                color: white;
+                border: none;
+                padding: 10px;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <h2>
+                📁 Quản lý công việc (Task Board)
+            </h2>
+            <input type="text" id="taskInput" placeholder="Nhập tên công việc...">
+            <button onclick="addTask()">Thêm</button>
+            <div class="task-columns">
+                <div class="column" id="pending">
+                    <h3>⏳ Chờ xử lý</h3>
+                </div>
+                <div class="column" id="inProgress">
+                    <h3>🔨 Đang làm</h3>
+                </div>
+                <div class="column" id="completed">
+                    <h3>✅ Hoàn thành</h3>
+                </div>
+            </div>
+        </div>
+        <script src="./js/bt05.js"></script>
+    </body>
+
+    </html>
