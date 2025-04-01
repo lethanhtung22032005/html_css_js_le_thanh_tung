@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý danh mục</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            background-color: #f8f9fa;
+        }
+
+        .sidebar {
+            width: 240px;
+            height: 100vh;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar h2 {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            padding: 10px;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+        }
+
+        .sidebar ul li a:hover {
+            background: #007bff;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+            padding: 15px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 24px;
+        }
+
+        .table-container {
+            background: #fff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ddd;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background: #f1f1f1;
+        }
+
+        .status-active {
+            color: green;
+        }
+
+        .status-inactive {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar">
+        <h2>Ecommerce</h2>
+        <ul>
+            <li><a href="#">Thống kê</a></li>
+            <li><a href="#">Danh mục</a></li>
+            <li><a href="#">Sản phẩm</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="header">
+            <h1>Quản lý danh mục</h1>
+            <button>Thêm mới danh mục</button>
+        </div>
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Mã danh mục</th>
+                    <th>Tên danh mục</th>
+                    <th>Trạng thái</th>
+                    <th>Chức năng</th>
+                </tr>
+                <tr>
+                    <td>DM001</td>
+                    <td>Quần áo</td>
+                    <td class="status-active">Đang hoạt động</td>
+                    <td>✏️ 🗑️</td>
+                </tr>
+                <tr>
+                    <td>DM002</td>
+                    <td>Kính mắt</td>
+                    <td class="status-inactive">Ngừng hoạt động</td>
+                    <td>✏️ 🗑️</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
