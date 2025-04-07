@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background: #f8f9fa;
+            position: fixed;
+            padding: 20px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 10px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .content {
+            margin-left: 270px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-left: 950px;
+        }
+
+        .table {
+            margin-left: 15px;
+            margin-top: 20px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 98%;
+        }
+
+        .table th,
+        .table td {
+            vertical-align: middle;
+            padding: 10px;
+            text-align: left;
+            border: none;
+
+        }
+
+        .btn-sm {
+            padding: 5px 8px;
+        }
+
+        .d-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .d-flex-2 {
+            display: flex;
+            justify-content: right;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-blue {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .pagination a {
+            padding: 8px 16px;
+            margin: 0 5px;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            text-decoration: none;
+            color: #4a5568;
+            font-size: 14px;
+        }
+
+        .sidebar nav a:hover {
+            background-color: #d7ecff;
+            color: #5590d2;
+        }
+
+        .pagination a:hover {
+            background-color: #d7ecff;
+            color: #5590d2;
+        }
+
+        .status-active-1 {
+            color: green;
+        }
+
+        .status-inactive-2 {
+            color: red;
+        }
+
+        .btn {
+            border: none;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        thead {
+            background-color: #F9FAFB;
+        }
+
+        .page-item {
+            margin: 0 5px;
+        }
+
+        .page-link {
+            display: block;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .page-link:hover {
+            background-color: #0056b3;
+        }
+
+        .active .page-link {
+            background-color: #0056b3;
+            cursor: default;
+        }
+
+        .modal {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: right;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .modal-container {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-body {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px;
+        }
+
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-top: 10px;
+        }
+
+        input[type="text"] {
+            padding: 5px;
+            margin-top: 5px;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .edit-modal {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .edit-modal-body {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 400px;
+        }
+
+        .edit-modal-body h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .edit-modal-body label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .edit-modal-body input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .edit-modal-body .radio-group {
+            margin-bottom: 15px;
+        }
+
+        .edit-modal-body input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        .edit-modal-body button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .edit-modal-body .save-button {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .edit-modal-body .cancel-button {
+            background-color: #f5f5f5;
+            color: #333;
+            margin-left: 10px;
+        }
+
+        .edit-modal-body button:hover {
+            opacity: 0.9;
+        }
+
+        .search {
+            position: absolute;
+            top: 152px;
+            right: 25px;
+        }
+        .form-control{
+            width: 190px;
+        }
+        .radio-group{
+            display: flex;
+        }
+        .button-group{
+            display: flex;
+            justify-content: right;
+        }
+        .save-button{
+            background-color: #007bff;
+            color: white;
+            border-radius: 10px;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .cancel-button{
+            border-radius: 10px;
+            cursor: pointer;
+            padding: 10px 20px;
+        }
+        .category-code{
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar">
+        <h4><img src="./Vector.png" alt="">Ecommerce</h4>
+        <nav>
+            <a href="#"><img src="./Home.png" alt=""> Thống kê</a>
+            <a href="#"><img src="./danhMuc.png" alt=""> Danh mục</a>
+            <a href="#"><img src="./sanpham.png" alt=""> Sản phẩm</a>
+        </nav>
+    </div>
+
+    <div class="content">
+        <div class="topbar">
+            <img src="./Ellipse 6.png" alt="Avatar" class="avatar">
+        </div>
+        <div class="d-flex">
+            <h2>Danh mục</h2>
+            <button class="btn-blue" id="myModal">Thêm mới danh mục</button>
+        </div>
+        <div class="d-flex-2">
+            <select name="" id="">
+                <option value="">Tìm kiếm theo trạng thái</option>
+                <option value="1">Đang hoạt động</option>
+                <option value="2">Ngừng hoạt động</option>
+            </select>
+            <div class="d-flex-3">
+                <input type="text" class="form-control mb-3" placeholder="Tìm kiếm danh mục theo tên">
+                <img class="search" src="./search.png" alt="">
+            </div>
+        </div>
+        <table class="table" cellspacing="0" cellpadding="10">
+            <thead>
+                <tr>
+                    <th>Mã danh mục <img src="./Icon.png" alt=""></th>
+                    <th>Tên danh mục <img src="./Icon.png" alt=""></th>
+                    <th>Trạng thái</th>
+                    <th>Chức năng</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>DM001</td>
+                    <td>Quần áo</td>
+                    <td class="status-active-1">● Đang hoạt động</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm delete-btn"><img src="./delete.png" alt=""></button>
+                        <button class="btn btn-warning btn-sm edit-button"><img src="./fix.png" alt=""></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>DM002</td>
+                    <td>Kính mắt</td>
+                    <td class="status-inactive-2">● Ngừng hoạt động</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm delete-btn"><img src="./delete.png" alt=""></button>
+                        <button class="btn btn-warning btn-sm edit-button">
+                            <img src="./fix.png" alt="Edit">
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>DM003</td>
+                    <td>Giày dép</td>
+                    <td class="status-active-1">● Đang hoạt động</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm delete-btn"><img src="./delete.png" alt=""></button>
+                        <button class="btn btn-warning btn-sm edit-button"><img src="./fix.png" alt=""></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>DM004</td>
+                    <td>Thời trang nam</td>
+                    <td class="status-inactive-2">● Ngừng hoạt động</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm delete-btn"><img src="./delete.png" alt=""></button>
+                        <button class="edit-button btn btn-warning btn-sm">
+                            <img src="./fix.png" alt="">
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>DM005</td>
+                    <td>Thời trang nữ</td>
+                    <td class="status-inactive-2">● Ngừng hoạt động</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm delete-btn"><img src="./delete.png" alt=""></button>
+                        <button class="btn btn-warning btn-sm edit-button"><img src="./fix.png" alt=""></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>DM006</td>
+                    <td>Hoa quả</td>
+                    <td class="status-inactive-2">● Ngừng hoạt động</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm delete-btn"><img src="./delete.png" alt=""></button>
+                        <button class="btn btn-warning btn-sm edit-button"><img src="./fix.png" alt=""></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>DM007</td>
+                    <td>Rau</td>
+                    <td class="status-active-1">● Đang hoạt động</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm delete-btn"><img src="./delete.png" alt=""></button>
+                        <button class="btn btn-warning btn-sm edit-button"><img src="./fix.png" alt=""></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>DM008</td>
+                    <td>Điện thoại</td>
+                    <td class="status-inactive-2">● Ngừng hoạt động</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm delete-btn"><img src="./delete.png" alt=""></button>
+                        <button class="btn btn-warning btn-sm edit-button"><img src="./fix.png" alt=""></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="pagination">
+            <a href="#"><i class="fas fa-chevron-left"></i></a>
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#" class="active">3</a>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">...</a>
+            <a href="#">20</a>
+            <a href="#"><i class="fas fa-chevron-right"></i></a>
+        </div>
+    </div>
+    <div class="modal">
+        <div class="modal-content">
+            <h2 id="openModal">Thêm mới danh mục</h2>
+            <label for="maDanhMuc">Mã danh mục *</label><br>
+            <input type="text" id="maDanhMuc" required><br><br>
+
+            <label for="tenDanhMuc">Tên danh mục *</label><br>
+            <input type="text" id="tenDanhMuc" required><br>
+
+            <div class="trang-thai">
+                <label>Trạng thái</label>
+                <div>
+                    <input type="radio" id="dangHoatDong" name="trangThai" value="dangHoatDong" checked>
+                    <label for="dangHoatDong">Đang hoạt động</label>
+
+                    <input type="radio" id="ngungHoatDong" name="trangThai" value="ngungHoatDong">
+                    <label for="ngungHoatDong">Ngừng hoạt động</label>
+                </div>
+            </div>
+
+            <div class="modal-buttons">
+                <button id="cancelButton" class="cancel-button">Hủy</button>
+                <button class="save-button">thêm</button>
+            </div>
+        </div>
+    </div>
+    <div id="edit-modal" class="edit-modal">
+        <div class="edit-modal-body">
+            <span class="close-button">&times;</span>
+            <h2>Cập nhật thông tin danh mục</h2>
+            <form>
+                <label for="categoryCode">Mã danh mục *</label>
+                <input  type="text" id="categoryCode" required>
+
+                <label for="categoryName">Tên danh mục *</label>
+                <input type="text" id="categoryName" required>
+
+                <label>Trạng thái</label>
+                <div class="radio-group">
+                    <input type="radio" id="statusActive" name="categoryStatus" value="active" checked>
+                    <label for="statusActive">Đang hoạt động</label>
+                    <input type="radio" id="statusInactive" name="categoryStatus" value="inactive">
+                    <label for="statusInactive">Ngừng hoạt động</label>
+                </div>
+                <div class="button-group">
+                    <button type="button" class="cancel-button">Hủy</button>
+                    <button type="submit" class="save-button">Lưu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="./test.js"></script>
+</body>
+
+</html>

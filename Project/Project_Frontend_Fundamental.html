@@ -1,34 +1,88 @@
 <!DOCTYPE html>
-<html lang="vi">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng ký tài khoản</title>
+    <title>Document</title>
     <link rel="stylesheet" href="./register.css">
 </head>
-
 <body>
-    <div class="register-container">
-        <div>
-            <h2>Đăng ký tài khoản</h2>
-            <p>Đăng ký tài khoản để sử dụng dịch vụ</p>
+    <div class="sidebar">
+        <h4><img src="./Vector.png" alt="">Ecommerce</h4>
+        <nav>
+            <a href="#"><img src="./Home.png" alt=""> Thống kê</a>
+            <a href="#"><img src="./danhMuc.png" alt=""> Danh mục</a>
+            <a href="#"><img src="./sanpham.png" alt=""> Sản phẩm</a>
+        </nav>
+    </div>
+
+    <div class="content">
+        <div class="topbar">
+            <img src="./Ellipse 6.png" alt="Avatar" class="avatar">
         </div>
-        <p><b>Họ và tên đệm</b></p>
-        <p><b>Tên</b></p>
-        <input type="text" placeholder="Họ và tên đệm">
-        <input type="text" placeholder="Tên">
-        <p><b>Email</b></p>
-        <input type="email" placeholder="Email">
-        <p><b>Mật khẩu</b></p>
-        <input type="password" placeholder="Mật khẩu">
-        <div class="checkbox-container">
-            <input type="checkbox" id="agree">
-            <label for="agree">Bạn đồng ý với <a href="#">chính sách và điều khoản</a></label>
+        <div class="d-flex">
+            <h2>Danh mục</h2>
+            <button class="btn-blue" id="btn-add">Thêm mới danh mục</button>
         </div>
-        <button>Đăng ký</button>
-        <div class="login-link">
-            Bạn đã có tài khoản? <a href="#">Đăng nhập</a>
+        <div class="d-flex-2">
+            <select name="" id="filter-status">
+                <option value="">Tìm kiếm theo trạng thái</option>
+                <option value="1">Đang hoạt động</option>
+                <option value="2">Ngừng hoạt động</option>
+            </select>
+            <input type="text" class="form-control mb-3" placeholder="Tìm kiếm danh mục theo tên">
+        </div>
+        <table class="table" cellspacing="0" cellpadding="10">
+            <thead>
+                <tr>
+                    <th>Mã danh mục <img src="./Icon.png" alt=""></th>
+                    <th>Tên danh mục <img src="./Icon.png" alt=""></th>
+                    <th>Trạng thái</th>
+                    <th>Chức năng</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>DM001</td>
+                    <td>Quần áo</td>
+                    <td class="status-active">● Đang hoạt động</td>
+                    <td>
+                        <button class="btn btn-warning btn-sm btn-edit"><img src="./fix.png" alt=""></button>
+                        <button class="btn btn-danger btn-sm"><img src="./delete.png" alt=""></button>
+                    </td>
+                </tr>
+                <!-- Các danh mục khác -->
+            </tbody>
+        </table>
+        <div class="pagination">
+            <a href="#"><i class="fas fa-chevron-left"></i></a>
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#" class="active">3</a>
+            <a href="#">4</a>
+            <a href="#">...</a>
+            <a href="#">20</a>
+            <a href="#"><i class="fas fa-chevron-right"></i></a>
+        </div>
+    </div>
+
+    <!-- Form Thêm/Cập nhật Danh mục -->
+    <div class="modal" id="category-modal">
+        <div class="modal-content">
+            <h3 id="modal-title">Thêm mới danh mục</h3>
+            <label>Mã danh mục *</label>
+            <input type="text" id="category-id" required>
+            <label>Tên danh mục *</label>
+            <input type="text" id="category-name" required>
+            <label>Trạng thái</label>
+            <select id="category-status">
+                <option value="1">Đang hoạt động</option>
+                <option value="2">Ngừng hoạt động</option>
+            </select>
+            <div class="modal-actions">
+                <button id="btn-cancel">Hủy</button>
+                <button id="btn-save">Lưu</button>
+            </div>
         </div>
     </div>
 </body>
