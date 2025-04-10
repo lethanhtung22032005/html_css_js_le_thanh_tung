@@ -91,3 +91,13 @@ button {
 .email{
     margin-top: 10px;
 }
+.error {
+    border-color: red;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    text-align: left;
+}

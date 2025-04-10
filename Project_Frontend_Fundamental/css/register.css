@@ -109,3 +109,7 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+.checkbox{
+    margin-top: 13px;
+}
