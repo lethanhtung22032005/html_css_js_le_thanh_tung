@@ -8,13 +8,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const itemss = document.getElementById("category-pro");
     itemss.addEventListener("click", function (event) {
         event.preventDefault();
-        window.location.href = "./product-manager.html";
+        window.location.href = "./product-manager.html"; // Thay đổi đường dẫn tại đây
     });
 
     const dashboardMenu = document.getElementById("dashboard-menu");
     dashboardMenu.addEventListener("click", function (event) {
         event.preventDefault();
-        window.location.href = "./dashboard.html";
+        window.location.href = "./product-manager.html";
     });
 
     const modal = document.querySelector(".modal");
@@ -25,9 +25,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     openModal.addEventListener("click", function () {
         modal.style.display = "flex";
-        document.getElementById("modal-title").textContent = "Thêm mới danh mục";
-        document.getElementById("maDanhMuc").value = "";
-        document.getElementById("tenDanhMuc").value = "";
+        document.getElementById("modal-title").textContent = "Thêm mới sản phẩm";
+        document.getElementById("maSanPham").value = "";
+        document.getElementById("tenSanPham").value = "";
+        document.getElementById("giaSanPham").value = "";
+        document.getElementById("soLuongSanPham").value = "";
         document.getElementById("dangHoatDong").checked = true;
     });
 
@@ -74,26 +76,27 @@ document.addEventListener("DOMContentLoaded", function () {
             window.location.href = './login.html';
         }
     });
-    let categories = JSON.parse(localStorage.getItem("categories")) || [];
+
+    let products = JSON.parse(localStorage.getItem("products")) || [];
 
     let currentPage = 1;
     const itemsPerPage = 5;
     let sortOrder = "asc";
 
-    function renderCategories() {
-        const tableBody = document.getElementById("category-table-body");
+    function renderProducts() {
+        const tableBody = document.getElementById("product-table-body");
         tableBody.innerHTML = "";
 
         const statusFilter = document.getElementById("status").value;
         const searchName = document.getElementById("search-name").value.toLowerCase();
 
-        let filteredCategories = categories.filter(category => {
-            const statusMatch = statusFilter === "" || category.status === statusFilter;
-            const nameMatch = category.name.toLowerCase().includes(searchName);
+        let filteredProducts = products.filter(product => {
+            const statusMatch = statusFilter === "" || product.status === statusFilter;
+            const nameMatch = product.name.toLowerCase().includes(searchName);
             return statusMatch && nameMatch;
         });
 
-        filteredCategories.sort((a, b) => {
+        filteredProducts.sort((a, b) => {
             if (sortOrder === "asc") {
                 return a.name.localeCompare(b.name);
             } else {
@@ -103,19 +106,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const startIndex = (currentPage - 1) * itemsPerPage;
         const endIndex = startIndex + itemsPerPage;
-        const pageCategories = filteredCategories.slice(startIndex, endIndex);
+        const pageProducts = filteredProducts.slice(startIndex, endIndex);
 
-        pageCategories.forEach(category => {
+        pageProducts.forEach(product => {
             const row = document.createElement("tr");
             row.innerHTML = `
-                <td>${category.id}</td>
-                <td>${category.name}</td>
-                <td class="${category.status}">${category.status === "active" ? "Đang hoạt động" : "Ngừng hoạt động"}</td>
+                <td>${product.id}</td>
+                <td>${product.name}</td>
+                <td>${product.price}</td>
+                <td>${product.quantity}</td>
+                <td class="${product.status}">${product.status === "active" ? "Đang hoạt động" : "Ngừng hoạt động"}</td>
                 <td>
-                    <button class="delete" data-id="${category.id}">
+                    <button class="delete" data-id="${product.id}">
                         <img src="/Project_Frontend_Fundamental/assets/delete.png" alt="Xóa">
                     </button>
-                    <button class="edit-button" data-id="${category.id}">
+                    <button class="edit-button" data-id="${product.id}">
                         <img src="/Project_Frontend_Fundamental/assets/fix.png" alt="Sửa">
                     </button>
                 </td>
@@ -123,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function () {
             tableBody.appendChild(row);
         });
 
-        renderPagination(filteredCategories.length);
+        renderPagination(filteredProducts.length);
         addEventListeners();
     }
 
@@ -140,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.querySelector("th:nth-child(2)").addEventListener("click", function () {
         sortOrder = sortOrder === "asc" ? "desc" : "asc";
-        renderCategories();
+        renderProducts();
     });
 
     function renderPagination(totalItems) {
@@ -161,19 +166,19 @@ document.addEventListener("DOMContentLoaded", function () {
             link.addEventListener("click", function (event) {
                 event.preventDefault();
                 currentPage = parseInt(this.dataset.page);
-                renderCategories();
+                renderProducts();
             });
         });
 
         document.querySelectorAll(".delete").forEach(button => {
             button.addEventListener("click", function () {
                 const id = this.dataset.id;
-                const confirmDelete = confirm("Xác nhận xóa danh mục?");
+                const confirmDelete = confirm("Xác nhận xóa sản phẩm?");
                 if (confirmDelete) {
-                    categories = categories.filter(category => category.id !== id);
-                    localStorage.setItem("categories", JSON.stringify(categories)); 
-                    showNotification("Xóa danh mục thành công!");
-                    renderCategories();
+                    products = products.filter(product => product.id !== id);
+                    localStorage.setItem("products", JSON.stringify(products));
+                    showNotification("Xóa sản phẩm thành công!");
+                    renderProducts();
                 }
             });
         });
@@ -181,12 +186,14 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll(".edit-button").forEach(button => {
             button.addEventListener("click", function () {
                 const id = this.dataset.id;
-                const category = categories.find(category => category.id === id);
-                if (category) {
+                const product = products.find(product => product.id === id);
+                if (product) {
                     document.getElementById("edit-modal").style.display = "flex";
-                    document.getElementById("categoryCode").value = category.id;
-                    document.getElementById("categoryName").value = category.name;
-                    document.getElementById(category.status === "active" ? "statusActive" : "statusInactive").checked = true;
+                    document.getElementById("productCode").value = product.id;
+                    document.getElementById("productName").value = product.name;
+                    document.getElementById("productPrice").value = product.price;
+                    document.getElementById("productQuantity").value = product.quantity;
+                    document.getElementById(product.status === "active" ? "statusActive" : "statusInactive").checked = true;
                     document.getElementById("edit-form").dataset.id = id;
                 }
             });
@@ -196,62 +203,65 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("edit-form").addEventListener("submit", function (event) {
         event.preventDefault();
         const id = this.dataset.id;
-        const name = document.getElementById("categoryName").value;
-        const status = document.querySelector('input[name="categoryStatus"]:checked').value;
-        if (!name) {
-            showNotification("Tên danh mục không được để trống!");
+        const name = document.getElementById("productName").value;
+        const price = document.getElementById("productPrice").value;
+        const quantity = document.getElementById("productQuantity").value;
+        const status = document.querySelector('input[name="productStatus"]:checked').value;
+
+        if (!name || !price || !quantity) {
+            showNotification("Vui lòng nhập đầy đủ thông tin sản phẩm!");
             return;
         }
-        if (categories.some(category => category.name === name && category.id !== id)) {
-            showNotification("Tên danh mục đã tồn tại!");
+
+        if (products.some(product => product.name === name && product.id !== id)) {
+            showNotification("Tên sản phẩm đã tồn tại!");
             return;
         }
-        const categoryIndex = categories.findIndex(category => category.id === id);
-        if (categoryIndex !== -1) {
-            categories[categoryIndex].name = name;
-            categories[categoryIndex].status = status;
-            localStorage.setItem("categories", JSON.stringify(categories)); 
-            showNotification("Cập nhật danh mục thành công!");
-            renderCategories();
+
+        const productIndex = products.findIndex(product => product.id === id);
+        if (productIndex !== -1) {
+            products[productIndex].name = name;
+            products[productIndex].price = price;
+            products[productIndex].quantity = quantity;
+            products[productIndex].status = status;
+            localStorage.setItem("products", JSON.stringify(products));
+            showNotification("Cập nhật sản phẩm thành công!");
+            renderProducts();
             document.getElementById("edit-modal").style.display = "none";
-            
         }
     });
 
     saveButton.addEventListener("click", function () {
-        const id = document.getElementById("maDanhMuc").value;
-        const name = document.getElementById("tenDanhMuc").value;
+        const id = document.getElementById("maSanPham").value;
+        const name = document.getElementById("tenSanPham").value;
+        const price = document.getElementById("giaSanPham").value;
+        const quantity = document.getElementById("soLuongSanPham").value;
         const status = document.querySelector('input[name="trangThai"]:checked').value;
-        if (!id) {
-            showNotification("Mã danh mục không được để trống!");
-            return;
-        }
-        if (categories.some(category => category.id === id)) {
-            showNotification("Mã danh mục đã tồn tại!");
+
+        if (!id || !name || !price || !quantity) {
+            showNotification("Vui lòng nhập đầy đủ thông tin sản phẩm!");
             return;
         }
 
-        // Kiểm tra tên danh mục
-        if (!name) {
-            showNotification("Tên danh mục không được để trống!");
+        if (products.some(product => product.id === id)) {
+            showNotification("Mã sản phẩm đã tồn tại!");
             return;
         }
-        if (categories.some(category => category.name === name)) {
-            showNotification("Tên danh mục đã tồn tại!");
+
+        if (products.some(product => product.name === name)) {
+            showNotification("Tên sản phẩm đã tồn tại!");
             return;
         }
-        categories.push({ id, name, status });
-        localStorage.setItem("categories", JSON.stringify(categories));
-        showNotification("Thêm mới danh mục thành công!");
+
+        products.push({ id, name, price, quantity, status });
+        localStorage.setItem("products", JSON.stringify(products));
+        showNotification("Thêm mới sản phẩm thành công!");
         modal.style.display = "none";
-        renderCategories();
+        renderProducts();
     });
 
+    document.getElementById("status").addEventListener("change", renderProducts);
+    document.getElementById("search-name").addEventListener("input", renderProducts);
 
-    document.getElementById("status").addEventListener("change", renderCategories);
-    document.getElementById("search-name").addEventListener("input", renderCategories);
-
-    renderCategories();
-
+    renderProducts();
 });
-
